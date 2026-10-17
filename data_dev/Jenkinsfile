@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     // Clone the Git repository
-                    git branch: 'main', url: 'https://github.com/DanyaHDanny/dqe-automation'
+                    git branch: 'main', url: 'https://github.com/volha-hancharuk/dqe-automation'
                 }
             }
         }
