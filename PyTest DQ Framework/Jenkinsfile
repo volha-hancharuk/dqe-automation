@@ -47,12 +47,12 @@ pipeline {
         always {
             archiveArtifacts artifacts: 'PyTest DQ Framework/html_report/**', allowEmptyArchive: true
             publishHTML(target: [
-                allowMissing: true,
-                keepAll: true,
-                reportDir: 'PyTest DQ Framework/html_report',
-                reportFiles: 'report.html',
-                reportName: 'HTML Test Report'
-            ])
+            allowMissing: false,
+            keepAll: true,
+            reportDir: 'PyTest DQ Framework/html_report',
+            reportFiles: 'report.html',
+            reportName: 'HTML Test Report'
+])
         }
     }
 }
