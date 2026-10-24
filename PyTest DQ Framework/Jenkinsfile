@@ -29,16 +29,18 @@ pipeline {
         stage('Run DQ Tests') {
             steps {
                 dir('PyTest DQ Framework') {
-                    sh '''
-                        . venv/bin/activate
-                        pytest tests -m "parquet_data" \
-                            --db_host="postgres" \
-                            --db_port="5432" \
-                            --db_name="mydatabase" \
-                            --db_user="$POSTGRES_SECRET_USR" \
-                            --db_password="$POSTGRES_SECRET_PSW" \
-                            --html=html_report/report.html --self-contained-html
-                    '''
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                        sh '''
+                            . venv/bin/activate
+                            pytest tests -m "parquet_data" \
+                                --db_host="postgres" \
+                                --db_port="5432" \
+                                --db_name="mydatabase" \
+                                --db_user="$POSTGRES_SECRET_USR" \
+                                --db_password="$POSTGRES_SECRET_PSW" \
+                                --html=html_report/report.html --self-contained-html
+                        '''
+                    }
                 }
             }
         }
