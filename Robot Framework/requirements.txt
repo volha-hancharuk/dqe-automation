@@ -1,5 +1,5 @@
-robotframework
-robotframework-seleniumlibrary
-pandas
-pyarrow
-selenium
+robotframework>=7.0
+robotframework-seleniumlibrary>=6.3
+selenium>=4.20
+pandas>=2.1
+pyarrow>=15.0
